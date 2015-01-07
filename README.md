@@ -1,3 +1,2 @@
 # Codeforces
-Practice for problem sets
-http://codeforces.com/
+Practice for problem sets: http://codeforces.com/
