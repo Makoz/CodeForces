@@ -7,67 +7,44 @@
 #include <limits>
 // 500C - http://codeforces.com/problemset/problem/500/C
 using namespace std;
-int N, D,X;
-map<int, int> W; // stores the respective weight of the ith book
-vector<int> myVect;
-
+int N, D, W[510],K,A[1010];
+// next1 stores the next index and next2 stores how much time it takes to get from next1[i]->next1[j]
 int minWeight = numeric_limits<int>::max();
-
-
-
-
 
 int main(){
 
-
 	cin >> N >> D;
 	int idx=1;
-	int B;
-	int Q=N;
-	while(Q--){
-		cin >> B;
-		W[idx] = B;
+	int sum=0;
+	while(N--){
+		cin >> W[idx];
 		idx++;
 	}
-
-int count = 1;
-
-	while(N >= count){
-		myVect.push_back(count);
-		count++;
-	}
-vector<int> orderOfRead;
-int K=D;
-while(K--){
-		cin >> X;
-		orderOfRead.push_back(X);
-}
-
-do{
-	vector<int> temp = myVect;
-	int tempWeight = 0;
-	for(int i=0; i<orderOfRead.size(); i++){
-		int Z = orderOfRead[i];
-	
-		int vectIdx = N-1;
-		while(temp[vectIdx] != Z){
-	
-			tempWeight += W[(temp[vectIdx])];
-			vectIdx--;
+	int C = D;
+	cin >> K;
+	A[D] = K;
+	C--;
+	int j = 1;
+	while(C--){
+		j++;
+		cin >> K;
+		int i = D;
+		int k2 = K;
+		while(A[i] != K){
+			sum += W[A[i]];
+			int m = A[i];
+			A[i] = k2;
+			i--;
+			k2=m;
+			if(A[i] == 0){
+				A[i] = m;
+				break;
+			}
+			
 		}
-		
-		
-		for(int j=vectIdx; j<(N-1); j++){
-			temp[j] = temp[j+1];
-		}
-		temp[N-1] = Z;
+		A[i] = k2;
 	}
+	cout << sum;
 	
-	if(tempWeight < minWeight){
-		minWeight = tempWeight;
-	}
-} while(next_permutation(myVect.begin(), myVect.end()));
-
-cout << minWeight << endl;
 return 0;
 }
