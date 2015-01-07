@@ -12,8 +12,7 @@ int N, idx, A;
 
 
 int main(){
-
-
+	
 	std::cin >> N;
 	cin >> idx;
 	int currIdx =1;
@@ -37,7 +36,6 @@ int main(){
 	else{
 		cout << "NO" << endl;
 	}
-
 
 return 0;
 }
