@@ -45,9 +45,6 @@ int returnMaxCombo(int startIdx, int endIdx, int budget){
 
 int main(){
 
-
-
-
  cin >> N >> P;
  int idx =0;
  int L=N;
